@@ -1,9 +1,11 @@
 package com.seroter.azure_basic_app.controller;
 
 import org.springframework.web.bind.annotation.*;
+import com.seroter.azure_basic_app.DTO.User;
+
 
 @RestController
-@RequestMapping("/hello")
+//@RequestMapping("/hello")
 public class HelloController {
 
     @GetMapping
@@ -13,11 +15,15 @@ public class HelloController {
     }
 
     @GetMapping("/hello/query")
-    public String greetUser(@RequestParam String name) {
+    public String greetUser(@RequestParam(value = "name") String name) {
         return "Hello " + name + " from BridgeLabz";
     }
     @GetMapping("/hello/param/{name}")
     public String sayHello(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz";
+    }
+    @PostMapping("/post")
+    public String sayHello(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
