@@ -21,5 +21,3 @@ public class HelloController {
         return "Hello " + name + " from BridgeLabz";
     }
 }
-
-
